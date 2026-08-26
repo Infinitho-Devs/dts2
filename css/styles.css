@@ -1,0 +1,649 @@
+/* ==========================================================================
+   Pink Night - Days to Shine 2026
+   Pink Carpet | 03 de septiembre | Salon Gran Embajador, Hotel El Embajador
+   Paleta oficial 2026 | Tipografias Dahlia + Kobe
+   ========================================================================== */
+
+/* ---------- Tipografias de marca (self-hosted, subset latino) ---------- */
+@font-face{
+  font-family:"Dahlia";
+  src:url("../fonts/dahlia-medium.woff2") format("woff2");
+  font-weight:500; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Dahlia";
+  src:url("../fonts/dahlia-bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Kobe";
+  src:url("../fonts/kobe11-regular.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Kobe";
+  src:url("../fonts/kobe11-bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Kobe";
+  src:url("../fonts/kobe11-black.woff2") format("woff2");
+  font-weight:900; font-style:normal; font-display:swap;
+}
+
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+:root{
+  /* Gama cromatica oficial 2026 */
+  --naranja-intencion:#FF9100;
+  --naranja-accion:#FD5217;
+  --rosado-brillante:#DD1348;
+  --rosado-vision:#FF1B68;
+  --rosado-paz:#FF76A3;
+  --offwhite:#FFF8F5;
+
+  /* Neutros derivados */
+  --tinta:#2A1119;
+  --tinta-suave:#6E5058;
+  --linea:#F2DCE3;
+  --blanco:#FFFFFF;
+
+  --radio-xl:2rem;
+  --radio-l:1.5rem;
+  --radio-m:.9rem;
+
+  --sombra-card:0 2px 6px rgba(80,0,30,.06), 0 40px 80px -40px rgba(120,0,45,.55);
+  --sombra-btn:0 .5rem 1.25rem -.375rem rgba(255,27,104,.55);
+
+  --display:"Dahlia",Georgia,"Times New Roman",serif;
+  --texto:"Kobe","Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   Escala tipografica
+   Todo el sitio se mide en rem, y el rem crece con el ancho de la pantalla.
+   Asi el texto no se queda diminuto en monitores grandes: a 1920px la base
+   es 21px en vez de 16px, y todo lo demas crece en proporcion.
+   -------------------------------------------------------------------------- */
+html{
+  font-size:clamp(17px, min(0.62vw + 13px, 1.3vh + 6px), 21px);
+  -webkit-text-size-adjust:100%;
+}
+/* Ejemplos de la escala:
+     390 x 844  -> 17.0px (minimo)
+    1366 x 768  -> 17.0px
+    1440 x 900  -> 17.6px
+    1920 x 1080 -> 20.0px
+    2560 x 1440 -> 21.0px (tope)                                            */
+
+/* ---------- Reset ---------- */
+*,*::before,*::after{box-sizing:border-box}
+body,h1,h2,h3,p,ul,li,figure,fieldset,legend,dl,dd{margin:0;padding:0}
+ul{list-style:none}
+fieldset{border:0}
+img,svg{display:block;max-width:100%}
+button,input{font:inherit;color:inherit}
+
+body{
+  font-family:var(--texto);
+  font-size:1rem;
+  line-height:1.55;
+  color:var(--tinta);
+  background:var(--rosado-vision);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+.grad{
+  background:linear-gradient(96deg,var(--rosado-vision),var(--naranja-accion));
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  font-style:normal;
+}
+
+/* ==========================================================================
+   Fondo: el degradado ocupa toda la pagina y la invitacion flota encima
+   ========================================================================== */
+.page{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(.75rem,1.5vh,1.6rem) clamp(1rem,3vw,2.75rem);
+}
+
+/* Degradado "ADN Days to Shine + Energia" */
+.page::before{
+  content:"";
+  position:absolute; inset:-10%;
+  z-index:-2;
+  background:
+    radial-gradient(55% 50% at 96% 4%,  var(--naranja-intencion) 0%, rgba(255,145,0,0) 62%),
+    radial-gradient(60% 60% at 100% 46%,var(--naranja-accion)    0%, rgba(253,82,23,0) 60%),
+    radial-gradient(70% 65% at 4% 96%,  var(--rosado-paz)        0%, rgba(255,118,163,0) 66%),
+    radial-gradient(85% 85% at 22% 12%, var(--rosado-vision)     0%, rgba(255,27,104,0) 72%),
+    linear-gradient(155deg, var(--rosado-vision) 0%, var(--rosado-brillante) 52%, #B00E4B 78%, var(--naranja-accion) 100%);
+}
+/* Bloom circular (referencia de la gama cromatica) */
+.page::after{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  left:-6%; top:-14%;
+  width:min(62%,58rem); aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle at 36% 32%, rgba(255,27,104,.9) 0%, rgba(255,60,120,.4) 46%, rgba(255,145,0,0) 72%);
+  pointer-events:none;
+}
+
+/* --------------------------------------------------------------------------
+   Piezas decorativas: los cuatro iconos de campana, uno en cada margen.
+   Van detras de la tarjeta (z-index -1) y se asoman por los lados.
+   Arriba: compromiso a la izquierda, transformacion a la derecha.
+   Abajo:  inspiracion a la izquierda, accion a la derecha.
+   -------------------------------------------------------------------------- */
+.deco{
+  position:absolute;
+  z-index:-1;
+  width:clamp(3.4rem,5.8vw,6.8rem);
+  opacity:.85;
+  filter:drop-shadow(0 1rem 2rem rgba(120,0,45,.35));
+  pointer-events:none;
+  animation:float 10s ease-in-out infinite;
+}
+.deco--transformacion{top:12%; left:2%;   animation-delay:-1s}
+.deco--inspiracion   {top:5%;  right:1.5%; animation-delay:-4s}
+.deco--compromiso    {top:72%; left:1.5%;  animation-delay:-2.5s}
+.deco--accion        {top:76%; right:2%;   animation-delay:-7s}
+
+/* Los iconos solo se muestran cuando hay margen real a los lados de la
+   tarjeta. Por debajo de ~1440px asomarian como astillas en el borde y se
+   verian como un error, asi que se ocultan. */
+@media (max-width:1439px){
+  .deco{display:none}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-1rem) rotate(10deg)}
+}
+
+/* ==========================================================================
+   La invitacion: una sola pieza con la info y el formulario
+   ========================================================================== */
+.wrap{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:70rem;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:clamp(1.5rem,3vw,3.5rem);
+  align-items:center;
+}
+@media (min-width:60rem){
+  .wrap{grid-template-columns:minmax(0,42fr) minmax(0,58fr)}
+}
+
+/* ---------- Lado izquierdo ---------- */
+.brand{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(1rem,2vw,1.75rem);
+  padding:0 clamp(.25rem,1vw,.75rem);
+  color:#fff;
+}
+
+.dts{width:clamp(7rem,10vw,10rem);height:auto}
+
+/* --- El titulo --- */
+.pink-night{
+  font-family:var(--display);
+  font-weight:700;
+  line-height:.84;
+  letter-spacing:-.012em;
+  font-size:clamp(3rem,8vw,5.4rem);
+  text-transform:uppercase;
+  filter:drop-shadow(0 .5rem 1.6rem rgba(140,0,50,.32));
+}
+.pink-night span{display:block}
+.pn-1{color:rgba(255,255,255,.68)}
+.pn-2{color:#fff;margin-left:.06em}
+
+/* --- Etiqueta sobre el titulo --- */
+.kicker{
+  margin-bottom:.5rem;
+  font-size:.78rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.85);
+}
+
+/* --- Gancho de la Pink Carpet (solo en esta variante) --- */
+.carpet{
+  display:flex; align-items:center; gap:.7rem;
+  max-width:30ch;
+  align-self:flex-start;
+  padding:.7rem 1.1rem;
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:999px;
+  background:rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  font-size:1rem;
+  line-height:1.3;
+}
+.carpet strong{font-weight:700}
+.carpet__ico{
+  flex:0 0 auto;
+  display:grid; place-items:center;
+  width:1.5rem; height:1.5rem;
+  border-radius:50%;
+  background:rgba(255,255,255,.9);
+}
+.carpet__ico svg{width:.85rem;height:.85rem;fill:var(--rosado-brillante)}
+
+/* --- Credito del patrocinador --- */
+.patrocinio{
+  display:flex; align-items:baseline; gap:.6rem;
+  font-size:.85rem;
+  color:rgba(255,255,255,.85);
+}
+.patrocinio__k{
+  font-size:.62rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+}
+.patrocinio__v{font-weight:700; letter-spacing:.02em}
+.patrocinio__v em{font-style:italic; font-weight:400}
+
+/* --- Datos del acto: lo minimo para saber a cual se esta confirmando --- */
+.datos{
+  display:grid;
+  gap:.7rem;
+}
+@media (min-width:30rem) and (max-width:59.99rem){
+  .datos{grid-template-columns:1fr 1fr; gap:1.25rem}
+}
+.dato{display:flex; flex-direction:column; gap:.1rem}
+.dato__k{
+  font-size:.66rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.65);
+}
+.dato__v{
+  font-size:1.12rem; font-weight:700; line-height:1.25;
+}
+.dato__v small{
+  display:block;
+  font-size:.9rem; font-weight:400;
+  color:rgba(255,255,255,.85);
+}
+
+.nota{
+  padding-top:clamp(.9rem,1.8vw,1.3rem);
+  border-top:1px solid rgba(255,255,255,.3);
+  font-size:.9rem;
+  line-height:1.5;
+  color:rgba(255,255,255,.88);
+  max-width:34ch;
+}
+
+/* ==========================================================================
+   Lado derecho: el formulario
+   ========================================================================== */
+.card{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(1.5rem,2.6vw,2.4rem) clamp(1.6rem,3vw,2.6rem);
+  background:var(--blanco);
+  border-radius:var(--radio-xl);
+  box-shadow:var(--sombra-card);
+}
+.card::before{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(55% 40% at 100% 0%, rgba(255,118,163,.13) 0%, rgba(255,118,163,0) 70%),
+    radial-gradient(45% 35% at 0% 100%, rgba(255,145,0,.09) 0%, rgba(255,145,0,0) 70%);
+}
+.card > *{position:relative}
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.55rem;
+  align-self:flex-start;
+  margin-bottom:.8rem;
+  padding:.35rem .85rem .35rem .6rem;
+  border-radius:999px;
+  background:#FFF0F4;
+  color:var(--rosado-brillante);
+  font-size:.73rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+}
+.eyebrow .dot{
+  width:.4rem; height:.4rem; border-radius:50%;
+  background:var(--rosado-vision);
+  box-shadow:0 0 0 .25rem rgba(255,27,104,.16);
+}
+
+.card h2{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(1.9rem,3.4vw,2.6rem);
+  line-height:1.04;
+  letter-spacing:-.005em;
+  color:var(--tinta);
+  text-wrap:balance;
+}
+.sub{
+  margin-top:.7rem;
+  color:var(--tinta-suave);
+  font-size:1.03rem;
+  max-width:44ch;
+}
+
+/* ---------- Campos ---------- */
+.fields{
+  display:grid;
+  gap:.85rem;
+  margin-top:clamp(1.2rem,2.2vw,1.7rem);
+}
+@media (min-width:36rem){
+  .fields{grid-template-columns:1fr 1fr}
+  .field--full{grid-column:1 / -1}
+}
+/* Con la columna del formulario ancha, los correos caben en una sola fila.
+   Bajar este umbral ahorra una fila entera en laptops de 1280px. */
+@media (min-width:70rem){
+  .field--pair{grid-column:auto}
+}
+
+.field{display:flex;flex-direction:column;gap:.4rem;min-width:0}
+.field label{
+  font-size:.8125rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--tinta);
+}
+.field label .req{color:var(--rosado-vision)}
+
+.field input{
+  width:100%;
+  min-height:3.15rem;
+  padding:.8rem .9rem;
+  border:1.5px solid var(--linea);
+  border-radius:var(--radio-m);
+  background:#FFFCFD;
+  font-size:1rem;   /* nunca menos de 16px reales: evita el zoom de iOS */
+  line-height:1.2;
+  transition:border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+.field input::placeholder{color:#C7AEB6}
+.field input:hover{border-color:#EAC6D1}
+.field input:focus{
+  outline:none;
+  background:#fff;
+  border-color:var(--rosado-vision);
+  box-shadow:0 0 0 .25rem rgba(255,27,104,.14);
+}
+.field.is-valid input{border-color:#F0C8D6}
+.field.has-error input{
+  border-color:var(--rosado-brillante);
+  background:#FFF6F8;
+}
+.field.has-error input:focus{box-shadow:0 0 0 .25rem rgba(221,19,72,.16)}
+
+.hint{font-size:.85rem;color:#9A7C85}
+.error{
+  display:none;
+  align-items:center; gap:.375rem;
+  font-size:.85rem; font-weight:700;
+  color:var(--rosado-brillante);
+}
+.error::before{
+  content:"!";
+  display:grid;place-items:center;
+  flex:0 0 auto;width:.875rem;height:.875rem;
+  border-radius:50%;background:var(--rosado-brillante);
+  color:#fff;font-size:.625rem;line-height:1;
+}
+.field.has-error .error{display:flex}
+.field.has-error .hint{display:none}
+
+/* Honeypot anti-spam */
+.hp{position:absolute!important;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+
+/* ---------- Boton ---------- */
+.submit{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  min-height:3.5rem;
+  margin-top:1.4rem;
+  padding:1rem 1.5rem;
+  border:0;
+  border-radius:999px;
+  background:linear-gradient(96deg,var(--rosado-vision) 0%,var(--rosado-brillante) 42%,var(--naranja-accion) 100%);
+  color:#fff;
+  font-family:var(--texto);
+  font-weight:900;
+  font-size:.97rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  cursor:pointer;
+  box-shadow:var(--sombra-btn);
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.submit::after{
+  content:"";
+  position:absolute; top:0; left:-120%;
+  width:60%; height:100%;
+  background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.4) 50%,rgba(255,255,255,0) 100%);
+  transform:skewX(-18deg);
+}
+.submit:hover{transform:translateY(-2px);box-shadow:0 .875rem 1.75rem -.5rem rgba(255,27,104,.6)}
+.submit:hover::after{animation:sweep .85s ease}
+.submit:active{transform:translateY(0)}
+.submit:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}
+.submit[disabled]{cursor:progress;filter:saturate(.6) brightness(1.05);transform:none;box-shadow:none}
+.submit .label{display:inline-flex;align-items:center;gap:.625rem;justify-content:center}
+@keyframes sweep{to{left:140%}}
+
+.spinner{
+  width:1.0625rem;height:1.0625rem;flex:0 0 auto;
+  border:2.5px solid rgba(255,255,255,.4);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  display:none;
+}
+.is-sending .spinner{display:block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.legal{
+  margin-top:.9rem;
+  font-size:.85rem;
+  line-height:1.5;
+  color:#7E5F6A;
+  text-align:center;
+}
+
+.notice{
+  display:none;
+  gap:.625rem;
+  margin-top:1rem;
+  padding:.8rem .95rem;
+  border-radius:var(--radio-m);
+  border:1px solid #F6C9D5;
+  background:#FFF3F6;
+  color:var(--rosado-brillante);
+  font-size:.9rem;
+  font-weight:700;
+}
+.notice.is-visible{display:flex}
+
+/* ==========================================================================
+   Estado de exito
+   ========================================================================== */
+.success{text-align:center;padding:.5rem 0}
+.success__star{
+  width:4.5rem;height:4.5rem;margin:0 auto 1.2rem;
+  animation:pop .55s cubic-bezier(.2,.9,.3,1.4) both;
+}
+@keyframes pop{from{transform:scale(.3) rotate(-40deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+.success h2{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(1.75rem,3.2vw,2.4rem);
+  line-height:1.06;
+  text-wrap:balance;
+}
+.success p{margin-top:.75rem;color:var(--tinta-suave);font-size:1.03rem;text-wrap:pretty}
+.success__data{
+  margin-top:1.4rem;
+  padding:1.1rem 1.25rem;
+  border:1px dashed #F3C9D7;
+  border-radius:var(--radio-m);
+  background:#FFF7FA;
+  text-align:left;
+  display:grid;
+  gap:.7rem;
+}
+.success__data > div{display:flex;justify-content:space-between;align-items:baseline;gap:.875rem}
+.success__data dt{
+  flex:0 0 auto;
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B08794;
+}
+.success__data dd{font-size:.95rem;font-weight:700;text-align:right;word-break:break-word}
+.ghost{
+  margin-top:1.3rem;
+  min-height:3rem;
+  padding:.75rem 1.5rem;
+  border:1.5px solid var(--linea);
+  border-radius:999px;
+  background:#fff;
+  color:var(--rosado-brillante);
+  font-weight:700;font-size:.85rem;letter-spacing:.09em;text-transform:uppercase;
+  cursor:pointer;
+  transition:border-color .18s ease,background-color .18s ease;
+}
+.ghost:hover{border-color:var(--rosado-paz);background:#FFF6F9}
+.ghost:focus-visible{outline:3px solid var(--rosado-vision);outline-offset:2px}
+
+/* Pie */
+.foot{
+  position:relative;
+  margin-top:1.5rem;
+  padding-top:1.1rem;
+  border-top:1px solid var(--linea);
+  display:flex;align-items:center;justify-content:center;gap:.75rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--rosado-brillante);
+}
+.foot img{width:3.5rem}
+.foot span{color:#8A6674}
+
+/* ==========================================================================
+   Telefonos de pantalla corta (iPhone SE, o cualquier movil apaisado)
+   Compactamos la invitacion para que el boton-guia entre en pantalla.
+   ========================================================================== */
+@media (max-width:959.98px) and (max-height:720px){
+  .page{padding:.6rem}
+  .brand{gap:.85rem;padding:1.3rem 1.4rem}
+  .dts{width:6.2rem}
+  .pink-night{font-size:clamp(2.8rem,12vw,3.8rem)}
+  .kicker{margin-bottom:.3rem;font-size:.7rem}
+  .datos{gap:.45rem}
+  .card{padding:1.4rem}
+}
+
+/* ==========================================================================
+   Ajuste fino de alto (ventanas de hasta 1040px)
+   Una ventana de 1920x1080 con barra de marcadores deja ~900px utiles, y ahi
+   la pieza se pasaba por unos 20px: justo lo suficiente para que apareciera
+   una barra de scroll. Recortamos relleno, no tamano de letra.
+   ========================================================================== */
+@media (min-width:960px) and (max-height:1040px){
+  .page{padding-top:.5rem;padding-bottom:.5rem}
+  .brand,.card{
+    padding-top:clamp(1.15rem,2vw,1.9rem);
+    padding-bottom:clamp(1.15rem,2vw,1.9rem);
+  }
+  .brand{gap:clamp(1rem,2vw,1.6rem)}
+  .fields{gap:.75rem}
+  .legal{margin-top:.75rem}
+  .foot{margin-top:1.2rem;padding-top:.9rem}
+}
+
+/* ==========================================================================
+   Pantallas anchas pero bajas (laptops de 720-830px de alto)
+   Compactamos la pieza para que entre completa sin scroll.
+   ========================================================================== */
+@media (min-width:960px) and (max-height:830px){
+  html{font-size:16px}
+  .page{padding:.3rem clamp(.75rem,1.8vw,1.4rem)}
+  .brand,.card{padding:1.05rem 1.5rem}
+  .brand{gap:.45rem}
+  .carpet{padding:.45rem .9rem;font-size:.92rem}
+  .patrocinio{font-size:.78rem}
+
+  .dts{width:7rem}
+  .pink-night{font-size:clamp(2.6rem,5.4vw,3.9rem)}
+  .kicker{margin-bottom:.35rem;font-size:.72rem}
+  .datos{gap:.5rem}
+  .carpet{padding:.55rem .95rem;font-size:.95rem}
+  .patrocinio{font-size:.8rem}
+  .dato__v{font-size:1.05rem}
+
+  .card h2{font-size:clamp(1.7rem,2.9vw,2.15rem)}
+  .sub{margin-top:.5rem}
+  .fields{gap:.55rem;margin-top:.8rem}
+  .field input{min-height:2.6rem;padding:.6rem .8rem}
+  .submit{min-height:3rem;margin-top:.9rem}
+  .legal{margin-top:.6rem}
+  .foot{margin-top:.85rem;padding-top:.75rem}
+}
+
+/* ==========================================================================
+   Laptops muy bajas (1280x720 y parecidas): ultimo recorte
+   ========================================================================== */
+@media (min-width:960px) and (max-height:660px){
+  html{font-size:15.5px}
+  .page{padding-top:.35rem;padding-bottom:.35rem}
+  .brand,.card{padding:.9rem 1.4rem}
+  .brand{gap:.4rem}
+  .carpet{padding:.4rem .8rem;font-size:.85rem}
+  .dts{width:6.2rem}
+  .pink-night{font-size:clamp(2.3rem,4.8vw,3.4rem)}
+  .datos{gap:.4rem}
+  .carpet{padding:.45rem .85rem;font-size:.9rem}
+  .sub{font-size:.95rem;margin-top:.45rem}
+  .fields{gap:.5rem;margin-top:.7rem}
+  .field input{min-height:2.5rem;padding:.55rem .75rem}
+  .submit{min-height:2.8rem;margin-top:.75rem}
+  .legal{margin-top:.55rem;font-size:.8rem}
+  .foot{margin-top:.65rem;padding-top:.6rem}
+}
+
+/* ==========================================================================
+   Preferencias del sistema
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+  }
+}
+@media print{
+  .page{min-height:0;padding:0}
+  .page::before,.page::after,.deco,.submit,.ghost{display:none}
+  .wrap{max-width:none}
+}

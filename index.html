@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pink Night · Pink Carpet · Days to Shine 2026</title>
+<meta name="description" content="Confirma tu asistencia a la inauguración exclusiva de Days to Shine 2026 y camina por la Pink Carpet. 03 de septiembre, 6:30 P.M., Salón Gran Embajador, Hotel El Embajador.">
+<meta name="theme-color" content="#FF1B68">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / redes -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_DO">
+<meta property="og:site_name" content="Days to Shine 2026">
+<meta property="og:title" content="Pink Night · Pink Carpet">
+<meta property="og:description" content="03 de septiembre · 6:30 P.M. · Salón Gran Embajador, Hotel El Embajador. Camina con nosotras por la fabulosa Pink Carpet.">
+<meta property="og:image" content="img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Iconos -->
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+<!-- Estilos + tipografías de marca -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/kobe11-regular.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/dahlia-bold.woff2">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<main class="page">
+
+  <!-- Decoración de fondo: los cuatro pilares de campaña, uno por esquina -->
+  <img class="deco deco--compromiso"     src="img/icon-compromiso.webp"     alt="" aria-hidden="true">
+  <img class="deco deco--transformacion" src="img/icon-transformacion.webp" alt="" aria-hidden="true">
+  <img class="deco deco--accion"         src="img/icon-accion.webp"         alt="" aria-hidden="true">
+  <img class="deco deco--inspiracion"    src="img/icon-inspiracion.webp"    alt="" aria-hidden="true">
+
+  <!-- ============ Marca sobre el degradado + el recuadro del formulario ====== -->
+  <div class="wrap">
+
+    <!-- ---------- Marca: va directo sobre el degradado, sin recuadro ---------- -->
+    <section class="brand">
+      <img class="dts" src="img/dts-logo-white.svg" alt="Days to Shine" width="164" height="78">
+
+      <div>
+        <p class="kicker">Inauguración exclusiva</p>
+        <h1 class="pink-night">
+          <span class="pn-1">Pink</span>
+          <span class="pn-2">Night</span>
+        </h1>
+      </div>
+
+      <p class="carpet">
+        <span class="carpet__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 1.8l2.1 6.4 6.7.1-5.4 4 2 6.5-5.4-3.9-5.4 3.9 2-6.5-5.4-4 6.7-.1z"/></svg>
+        </span>
+        <span>¡Camina con nosotras por la fabulosa <strong>Pink&nbsp;Carpet!</strong></span>
+      </p>
+
+      <div class="datos">
+        <p class="dato">
+          <span class="dato__k">Cuándo</span>
+          <span class="dato__v">03 de septiembre · 6:30 P.M.</span>
+        </p>
+        <p class="dato">
+          <span class="dato__k">Dónde</span>
+          <span class="dato__v">Salón Gran Embajador <small>Hotel El Embajador</small></span>
+        </p>
+      </div>
+
+      <p class="nota">
+        Invitación intransferible. Requiere presentar cédula en la entrada.
+      </p>
+
+      <p class="patrocinio">
+        <span class="patrocinio__k">Con</span>
+        <span class="patrocinio__v">Elizabeth Arden · <em>eternal AURA</em></span>
+      </p>
+
+    </section>
+
+    <!-- ---------- El recuadro: solo el formulario ---------- -->
+    <section class="card">
+
+      <div id="vista-form">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Registro</p>
+        <h2>Confirma tu <em class="grad">asistencia</em></h2>
+        <p class="sub">
+          Completa tus datos y aparta tu lugar en la Pink Carpet. Enviaremos la
+          confirmación al correo que registres.
+        </p>
+
+        <form id="form-asistencia" novalidate autocomplete="on" data-endpoint="">
+          <fieldset class="fields">
+            <legend class="sr-only">Datos de la invitada</legend>
+
+            <div class="field" data-field="nombre">
+              <label for="nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
+              <input id="nombre" name="nombre" type="text" autocomplete="given-name"
+                     placeholder="Nombre" required maxlength="60"
+                     aria-describedby="nombre-error">
+              <p class="error" id="nombre-error" role="alert"></p>
+            </div>
+
+            <div class="field" data-field="apellido">
+              <label for="apellido">Apellido <span class="req" aria-hidden="true">*</span></label>
+              <input id="apellido" name="apellido" type="text" autocomplete="family-name"
+                     placeholder="Apellido" required maxlength="60"
+                     aria-describedby="apellido-error">
+              <p class="error" id="apellido-error" role="alert"></p>
+            </div>
+
+            <div class="field" data-field="cedula">
+              <label for="cedula">Cédula <span class="req" aria-hidden="true">*</span></label>
+              <input id="cedula" name="cedula" type="text" inputmode="numeric"
+                     placeholder="000-0000000-0" required maxlength="13"
+                     autocomplete="off" aria-describedby="cedula-hint cedula-error">
+              <p class="hint" id="cedula-hint">La pedirán en la entrada.</p>
+              <p class="error" id="cedula-error" role="alert"></p>
+            </div>
+
+            <div class="field" data-field="telefono">
+              <label for="telefono">Teléfono <span class="req" aria-hidden="true">*</span></label>
+              <input id="telefono" name="telefono" type="tel" inputmode="tel"
+                     placeholder="809-000-0000" required maxlength="18"
+                     autocomplete="tel" aria-describedby="telefono-hint telefono-error">
+              <p class="hint" id="telefono-hint">Celular o WhatsApp.</p>
+              <p class="error" id="telefono-error" role="alert"></p>
+            </div>
+
+            <div class="field field--full field--pair" data-field="correo">
+              <label for="correo">Correo electrónico <span class="req" aria-hidden="true">*</span></label>
+              <input id="correo" name="correo" type="email" inputmode="email"
+                     autocomplete="email" placeholder="correo@email.com" required maxlength="120"
+                     spellcheck="false" aria-describedby="correo-error">
+              <p class="error" id="correo-error" role="alert"></p>
+            </div>
+
+            <div class="field field--full field--pair" data-field="correo2">
+              <label for="correo2">Confirma tu correo <span class="req" aria-hidden="true">*</span></label>
+              <input id="correo2" name="correo2" type="email" inputmode="email"
+                     autocomplete="email" placeholder="Escríbelo de nuevo" required maxlength="120"
+                     spellcheck="false" aria-describedby="correo2-hint correo2-error">
+              <p class="hint" id="correo2-hint">Ahí llegará tu confirmación.</p>
+              <p class="error" id="correo2-error" role="alert"></p>
+            </div>
+
+            <!-- Trampa anti-spam: invisible para personas, tentadora para bots -->
+            <div class="hp" aria-hidden="true">
+              <label for="sitio-web">No completar este campo</label>
+              <input id="sitio-web" name="sitio_web" type="text" tabindex="-1" autocomplete="off">
+            </div>
+          </fieldset>
+
+          <button class="submit" type="submit" id="btn-enviar">
+            <span class="label">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="texto">Confirmar asistencia</span>
+            </span>
+          </button>
+
+          <p class="notice" id="aviso" role="alert"></p>
+
+          <p class="legal">
+            Al confirmar aceptas que Days to Shine use tus datos para gestionar tu
+            invitación y enviarte información del evento.
+          </p>
+        </form>
+      </div>
+
+      <!-- Vista: confirmación -->
+      <div id="vista-exito" class="success" hidden>
+        <img class="success__star" src="img/star.svg" alt="" aria-hidden="true" width="84" height="84">
+        <h2>¡Listo! Tu lugar está <span class="grad">confirmado</span></h2>
+        <p>Te enviamos la confirmación por correo. Nos vemos el 03 de septiembre a las 6:30 P.M. en el Salón Gran Embajador. Recuerda llevar tu cédula.</p>
+
+        <dl class="success__data">
+          <div><dt>Nombre</dt><dd id="r-nombre"></dd></div>
+          <div><dt>Cédula</dt><dd id="r-cedula"></dd></div>
+          <div><dt>Teléfono</dt><dd id="r-telefono"></dd></div>
+          <div><dt>Correo</dt><dd id="r-correo"></dd></div>
+        </dl>
+
+        <button class="ghost" type="button" id="btn-otro">Registrar otra persona</button>
+      </div>
+
+      <p class="foot">
+        <img src="img/dts-logo-pink.svg" alt="Days to Shine" width="56" height="27">
+        <span>Shine Now · 2026</span>
+      </p>
+
+    </section>
+  </div>
+</main>
+
+<!-- Región de estado para lectores de pantalla -->
+<p class="sr-only" role="status" aria-live="polite" id="estado"></p>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
