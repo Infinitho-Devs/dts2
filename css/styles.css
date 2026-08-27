@@ -495,6 +495,7 @@ body{
    Estado de exito
    ========================================================================== */
 .success{text-align:center;padding:.5rem 0}
+.success:focus{outline:none}
 .success__star{
   width:4.5rem;height:4.5rem;margin:0 auto 1.2rem;
   animation:pop .55s cubic-bezier(.2,.9,.3,1.4) both;
@@ -524,21 +525,6 @@ body{
   font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B08794;
 }
 .success__data dd{font-size:.95rem;font-weight:700;text-align:right;word-break:break-word}
-.ghost{
-  margin-top:1.3rem;
-  min-height:3rem;
-  padding:.75rem 1.5rem;
-  border:1.5px solid var(--linea);
-  border-radius:999px;
-  background:#fff;
-  color:var(--rosado-brillante);
-  font-weight:700;font-size:.85rem;letter-spacing:.09em;text-transform:uppercase;
-  cursor:pointer;
-  transition:border-color .18s ease,background-color .18s ease;
-}
-.ghost:hover{border-color:var(--rosado-paz);background:#FFF6F9}
-.ghost:focus-visible{outline:3px solid var(--rosado-vision);outline-offset:2px}
-
 /* Pie */
 .foot{
   position:relative;
@@ -646,6 +632,6 @@ body{
 }
 @media print{
   .page{min-height:0;padding:0}
-  .page::before,.page::after,.deco,.submit,.ghost{display:none}
+  .page::before,.page::after,.deco,.submit{display:none}
   .wrap{max-width:none}
 }
