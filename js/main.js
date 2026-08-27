@@ -39,7 +39,6 @@
   var estado    = document.getElementById('estado');
   var vistaForm = document.getElementById('vista-form');
   var vistaOk   = document.getElementById('vista-exito');
-  var btnOtro   = document.getElementById('btn-otro');
 
   var campos = {
     nombre:   document.getElementById('nombre'),
@@ -382,21 +381,7 @@
     vistaOk.hidden = false;
     estado.textContent = 'Asistencia confirmada. Gracias, ' + datos.nombre + '.';
     vistaOk.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    if (btnOtro) btnOtro.focus({ preventScroll: true });
+    vistaOk.focus({ preventScroll: true });
   }
 
-  if (btnOtro) {
-    btnOtro.addEventListener('click', function () {
-      form.reset();
-      Object.keys(campos).forEach(function (clave) {
-        limpiarError(campos[clave], false);
-      });
-      ocultarAviso();
-      cargando(false);
-      abiertoEn = Date.now();
-      vistaOk.hidden = true;
-      vistaForm.hidden = false;
-      campos.nombre.focus();
-    });
-  }
 })();
