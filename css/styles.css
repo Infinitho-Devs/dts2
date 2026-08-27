@@ -1,6 +1,6 @@
 /* ==========================================================================
    Pink Night - Days to Shine 2026
-   Pink Carpet | 03 de septiembre | Salon Gran Embajador, Hotel El Embajador
+   Pink Carpet | 03 de septiembre | Salon Gran Embajador, Royal Hideaway Hotel
    Paleta oficial 2026 | Tipografias Dahlia + Kobe
    ========================================================================== */
 
@@ -325,14 +325,16 @@ body{
   margin-bottom:.8rem;
   padding:.35rem .85rem .35rem .6rem;
   border-radius:999px;
-  background:#FFF0F4;
-  color:var(--rosado-brillante);
+  /* Tono un punto mas profundo que el de la otra variante: junto con el texto
+     "Pink Carpet" sirve para saber de un vistazo en cual pagina se esta. */
+  background:#FFE4EE;
+  color:#B00E4B;
   font-size:.73rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
 }
 .eyebrow .dot{
   width:.4rem; height:.4rem; border-radius:50%;
-  background:var(--rosado-vision);
-  box-shadow:0 0 0 .25rem rgba(255,27,104,.16);
+  background:var(--rosado-brillante);
+  box-shadow:0 0 0 .25rem rgba(221,19,72,.18);
 }
 
 .card h2{
